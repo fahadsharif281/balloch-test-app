@@ -1,0 +1,146 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px 10px 12px;
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: black;
+    padding: 4px 9px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+    &:hover {
+      color: black;
+      background-color: rgb(245, 245, 245);
+    }
+
+    &:active {
+      color: black;
+      background-color: rgb(245, 245, 245);
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+      margin-right: 1rem;
+    }
+  }
+
+  .menu {
+    padding: 11px;
+    width: 40px;
+    background-color: rgb(240, 240, 240);
+
+    img {
+      margin: 0px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .menu_drop_down {
+    position: relative;
+
+    .menu_list {
+      position: absolute;
+      right: 0;
+      top: 45px;
+      background-color: rgb(255, 255, 255);
+      color: rgb(38, 38, 38);
+      border-radius: 4px;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+      width: 290px;
+
+      .menu_item {
+        cursor: default;
+        position: relative;
+        pointer-events: none;
+        background-color: transparent;
+
+        &:hover {
+          background-color: transparent;
+        }
+
+        &:focus &:active {
+          background-color: transparent;
+        }
+      }
+
+      .text {
+        font-size: 0.875rem;
+      }
+
+      .list_item {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .user_avatar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .email {
+            font-size: 14px;
+          }
+
+          img {
+            width: 32px;
+            height: 32px;
+            margin-right: 1rem;
+          }
+        }
+      }
+
+      .logout_avatar {
+        cursor: pointer;
+        position: absolute;
+        right: 27px;
+        top: 34px;
+        padding: 6px;
+        border-radius: 4px;
+
+        &:hover {
+          background-color: rgb(249, 249, 249);
+        }
+      }
+    }
+  }
+}
+
+.image {
+  position: absolute;
+  width: 36px;
+  border-radius: 4px;
+  right: 52px;
+  padding: 10px 8px 13px 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-grey-lightest;
+  }
+}
+
+.update_button {
+  width: 29%;
+}
+
+.modal_container {
+  padding: 32px;
+}

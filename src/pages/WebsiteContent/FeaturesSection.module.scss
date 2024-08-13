@@ -1,0 +1,21 @@
+.container {
+  padding: 10px;
+
+  .heading {
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.33;
+  }
+}
+.btn {
+  width: min-content;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.inputfield {
+  background: transparent;
+}
+.input_label {
+  color: rgb(89, 89, 89);
+}

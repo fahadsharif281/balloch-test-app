@@ -1,0 +1,57 @@
+.container {
+  padding: 10px;
+
+  .section1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .heading {
+      margin: 0px;
+      font-weight: 600;
+      font-size: 1.5rem;
+      line-height: 1.33;
+    }
+
+    .button {
+      width: fit-content;
+    }
+  }
+
+  .text {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.57;
+  }
+
+  .image_input {
+    height: 360px;
+    color: rgb(89, 89, 89);
+
+    .place_holder {
+      padding: 120px 400px;
+    }
+  }
+}
+
+.title {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.btn {
+  width: min-content;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.inputfield {
+  background: transparent;
+}
+
+.input_label {
+  color: rgb(89, 89, 89);
+}

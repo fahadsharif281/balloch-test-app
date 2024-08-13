@@ -1,0 +1,55 @@
+.main_container {
+  .main_heading {
+    margin: 0px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.7px;
+    font-family: "Public Sans", sans-serif;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    gap: 1rem;
+    justify-content: space-between;
+
+    .card_section {
+      background-color: rgb(255, 255, 255);
+      color: rgb(38, 38, 38);
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+        rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+      border: 1px solid rgb(230, 235, 241);
+      border-radius: 4px;
+      margin-bottom: 7px;
+      flex-basis: 305px;
+      padding: 20px;
+      padding-bottom: 40px;
+      overflow-y: auto;
+      height: 150px;
+
+      .name {
+        margin: 0px;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .email {
+        margin: 0px;
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 1.57;
+      }
+
+      .message {
+        margin: 0px 0px 12px;
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 1.57;
+        color: grey;
+      }
+    }
+  }
+}

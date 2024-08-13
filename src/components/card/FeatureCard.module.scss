@@ -1,0 +1,57 @@
+.container {
+  text-align: center;
+  margin-bottom: 4px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 24px;
+  border-radius: 4px;
+
+  .card {
+
+    .editButton {
+      font-size: 12px;
+      padding: 7px 18px;
+    }
+
+    .deleteButton {
+      font-size: 12px;
+      padding: 7px 18px;
+      background-color: rgb(255, 77, 79);
+
+      &:hover {
+        background-color: rgb(168, 7, 26);
+      }
+    }
+
+    img {
+      width: 30px;
+      margin-top: 1%;
+    }
+
+    .title {
+      margin: 10% 0px 0px;
+      line-height: 1.334;
+      letter-spacing: 0em;
+      font-weight: 700;
+      font-size: 16px;
+      color: rgb(26, 81, 59);
+    }
+
+    .description {
+      font-size: 14px;
+      color: rgb(26, 81, 59);
+      line-height: 25px;
+      margin: 10% 0px 0px;
+      overflow: hidden;
+      height: 150px;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12%;
+    }
+  }
+}

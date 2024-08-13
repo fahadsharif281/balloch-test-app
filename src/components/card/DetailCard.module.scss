@@ -1,0 +1,135 @@
+@import '../../styles/variables.scss';
+
+.container {
+    width: 100%;
+
+    .label_contain {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .label {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .button_class {
+            padding: 6px 12px;
+        }
+
+        .add_button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+
+            .img {
+                margin-bottom: 3px;
+                margin-right: 8px;
+            }
+        }
+    }
+
+    .card_container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        justify-content: flex-start;
+        align-items: center;
+
+        .card {
+            flex-grow: 0;
+            flex-basis: 266px;
+            border-radius: 4px;
+            color: black;
+            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+                rgba(0, 0, 0, 0.14) 0px 1px 1px 0px,
+                rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+
+            .title_contain {
+                width: 195px;
+
+                .title {
+                    font-size: 14px;
+                    font-weight: 600;
+                    padding: 20px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            img {
+                border-radius: 4px 4px 0px 0px;
+                height: 140px;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .card_images {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 8px;
+
+                >div {
+                    cursor: pointer;
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}
+
+.modal_container {
+    padding: 8px 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+
+    .warning {
+        font-weight: 600;
+        font-size: 1.25rem;
+        line-height: 1.4;
+        font-family: "Public Sans", sans-serif;
+        text-align: center;
+    }
+
+    .btn_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .yes_btn_container {
+            width: auto;
+
+            .yes_btn {
+                width: fit-content;
+                margin-right: 8px;
+
+                &:hover {
+                    background-color: white;
+                    color: $color-green;
+                    border: 1px solid $color-green;
+                }
+            }
+
+            .no_btn {
+                width: fit-content;
+                background-color: red;
+
+                &:hover {
+                    background-color: white;
+                    color: red;
+                    border: 1px solid red;
+                }
+            }
+        }
+    }
+
+}

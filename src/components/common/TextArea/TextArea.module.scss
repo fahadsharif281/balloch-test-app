@@ -1,0 +1,66 @@
+@import "../../../styles//variables.scss";
+
+.container {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    .label {
+        margin-bottom: 8px;
+        font-size: 0.875rem;
+        line-height: 1.4375em;
+        font-family: "Public Sans", sans-serif;
+        font-weight: 400;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .input {
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid $color-grey-ligtest;
+        padding: 16.8px 12px;
+        position: relative;
+        overflow: auto;
+
+        &:hover {
+            border: 1px solid $color-green;
+        }
+
+        &:focus {
+            border: 1px solid $color-green;
+            box-shadow: 0px 0px 2px $color-green;
+            outline: none;
+        }
+    }
+
+    .error_input {
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid $color-red;
+        padding: 16.8px 12px;
+        position: relative;
+
+        &:hover {
+            border: 1px solid $color-red-light !important;
+        }
+
+        &:focus {
+            border: 1px solid $color-red !important;
+            box-shadow: 0px 0px 2px $color-red !important;
+            outline: none;
+        }
+    }
+
+    .error {
+        color: $color-red;
+        font-size: 0.75rem;
+    }
+
+    ::placeholder {
+        color: $color-grey-light;
+        font-size: smaller;
+        opacity: 0.7;
+    }
+}

@@ -1,0 +1,34 @@
+.container {
+    .flex_container {
+        padding-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        .heading {
+            font-weight: 700;
+        }
+
+        .btn_container {
+            width: fit-content;
+        }
+    }
+
+    .sub_heading {
+        font-weight: 400;
+        font-size: 0.825rem;
+        line-height: 1.57;
+        font-family: "Public Sans", sans-serif;
+        text-align: left;
+    }
+
+    .map_container {
+        height: 65vh;
+        width: 100%;
+        padding: 12px 96px;
+
+        @media screen and (max-width: 1000px) {
+            padding: 12px 32px;
+        }
+    }
+}

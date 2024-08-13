@@ -1,0 +1,28 @@
+.container {
+    padding-bottom: 8px;
+
+    p {
+        margin-bottom: 0px;
+    }
+
+    .img_container {
+        padding: 4px;
+        border: 2px dotted lightgrey;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+
+        img {
+            height: 60px;
+        }
+    }
+
+    .title {
+        margin-bottom: 8px;
+        font-size: 0.875rem;
+        line-height: 1.4375em;
+        font-family: "Public Sans", sans-serif;
+        font-weight: 400;
+    }
+}
