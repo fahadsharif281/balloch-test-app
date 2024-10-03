@@ -15,6 +15,9 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    setRoutes: (state, action) => {
+      state.routes = [...action.payload];
+    },
     resetUser: () => initialState,
   },
   extraReducers: (builder) => {
@@ -50,6 +53,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { resetUser } = userSlice.actions;
+export const { resetUser, setRoutes } = userSlice.actions;
 
 export default userSlice.reducer;

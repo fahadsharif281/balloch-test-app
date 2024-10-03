@@ -143,3 +143,13 @@ export const deleteContentCardApiCall = async (id: string): Promise<any> => {
     `/api/contents_cards/deleteContentCard?content_id=${id}`
   );
 };
+
+export const updateUserAllCategoriesRoutes = async (
+  params: any
+): Promise<any> => {
+  return HTTP_CLIENT.post<any>(`/api/screen_type/updateAllCategories`, params, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
