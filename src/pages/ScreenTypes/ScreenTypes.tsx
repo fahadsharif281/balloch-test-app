@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import classes from "./ScreenTypes.module.scss";
 import Img from "../../assets/png/Car Parking.png";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { EditIconOrange } from "../../assets/svg/SvgImges";
+import { EditIconOrange, PlusSign } from "../../assets/svg/SvgImges";
 import Modal from "../../components/common/Modal/Modal";
 import EditScreen from "./EditScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { getScreenTypes } from "../../redux/actions/screenTypes.action";
 import { IScreenTypesAPIResult } from "../../models/IScreenTypesReducer";
+import CustomButton from "../../components/common/Button/Button";
+import { Input } from "@mui/material";
+import { TextArea } from "../../components/common/TextArea/TextArea";
+import AddCatogoryScreen from "./AddCatogoryScreen";
 const baseURL = process.env.REACT_APP_BASE_URL;
 const ScreenTypes = () => {
   const dispatch = useDispatch<any>();
@@ -15,6 +19,7 @@ const ScreenTypes = () => {
     (state: any) => state.root.screenTypes
   );
   const [show, setShow] = useState(false);
+  const [showCatogory, setShowCatogoryModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState<IScreenTypesAPIResult>();
   const renderTooltip = (name: string, ...props: any) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -27,10 +32,32 @@ const ScreenTypes = () => {
   const handleClose = () => {
     setShow(!show);
   };
+  const handleCloseCatogoryModal = () => {
+    setShowCatogoryModal(!showCatogory);
+  };
   return (
     <>
       {!isUsersLoading && (
         <div className={classes.container}>
+          <div className={classes.add_button_container}>
+            <CustomButton
+              onClick={() => {
+                handleCloseCatogoryModal()
+              }}
+              containerClassName={classes.add_button}
+              buttonClassName={classes.button_class}
+              text={
+                <>
+                  <div className={classes.add_button}>
+                    <div className={classes.img}>
+                      <PlusSign />
+                    </div>
+                    <div>Add</div>
+                  </div>
+                </>
+              }
+            />
+          </div>
           <div className={classes.table}>
             <div className={classes.header}>
               <div>Icon</div>
@@ -77,6 +104,15 @@ const ScreenTypes = () => {
         show={show}
       >
         <EditScreen onHide={handleClose} selectedUser={selectedUser} />
+      </Modal>
+      <Modal
+        title="Add Catogory"
+        closeButton={true}
+        onHide={handleCloseCatogoryModal}
+        show={showCatogory}
+      >
+        <AddCatogoryScreen onHide={handleCloseCatogoryModal} selectedUser={selectedUser} />
+
       </Modal>
     </>
   );

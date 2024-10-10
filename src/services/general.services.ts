@@ -84,6 +84,13 @@ export const updateScreenTypesImageApiCall = async (
     },
   });
 };
+export const addScreenTypesApiCall = async (params: any): Promise<any> => {
+  return HTTP_CLIENT.post<any>(`/api/screen_type/addScreenType`, params, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
 
 export const getAboutUsResultsApiCall = async (): Promise<any> => {
   return HTTP_CLIENT.get<any>(`/api/aboutUs/getAboutUs`);
@@ -111,7 +118,6 @@ export const getPrivacyPolicyApiCall = async (): Promise<any> => {
 export const addPrivacyPolicyApiCall = async (params: any): Promise<any> => {
   return HTTP_CLIENT.post<any>(`/api/privacyPolicy/addPrivacyPolicy`, params);
 };
-
 export const getAllUsersDashboard = async (): Promise<any> => {
   return HTTP_CLIENT.get<any>(`/api/user/getAllUsers/`);
 };

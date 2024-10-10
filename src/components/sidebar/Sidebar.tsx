@@ -70,7 +70,7 @@ export const Sidebar = ({
                 ref={provided.innerRef}
               >
                 {userRoutes?.map((items: any, index: number) => {
-                  const src = items?.image.includes("base64")
+                  const src = items?.image?.includes("base64")
                     ? items?.image
                     : `${baseURL}/${items?.image}`;
                   return (
@@ -87,7 +87,7 @@ export const Sidebar = ({
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
                                 ref={provided.innerRef}
-                                to={items.to}
+                                to={`/screen-location/${items?.type}`}
                                 className={({ isActive }) =>
                                   isActive
                                     ? classes.active_menu_item

@@ -12,6 +12,11 @@ import { LinearProgress } from "@mui/material";
 import { useSelector } from "react-redux";
 import classes from "./Routes.module.scss";
 import ResetPassword from "../pages/auth/resetPassword/ResetPassword";
+import ScreenLocation from "../pages/ScreenLocation/ScreenLocation";
+import ViewDetails from "../pages/ViewDetails/ViewDetails";
+import EditDetails from "../pages/EditDetails/EditDetails";
+import SelectLocation from "../pages/SelectLocation/SelectLocation";
+import AddLocation from "../pages/AddLocation/AddLocation";
 const Routes = (): JSX.Element => {
   const { userRoutes } = useRoutes();
   const { isLoading } = useSelector((state: any) => state.root.location);
@@ -77,33 +82,28 @@ const Routes = (): JSX.Element => {
         </Route> */}
         <Route element={<Protected />}>
           <Route element={<Layout />}>
+            <Route path="/screen-location/:type" element={<ScreenLocation />} />
+            <Route
+              path="/screen-location/:type/view-details"
+              element={<ViewDetails />}
+            />
+            <Route
+              path="/screen-location/:type/edit-details"
+              element={<EditDetails />}
+            />
+            <Route
+              path="/screen-location/:type/select-location"
+              element={<SelectLocation />}
+            />
+            <Route
+              path="/screen-location/:type/select-location/add-form"
+              element={<AddLocation />}
+            />
             {userRoutes?.map((item) => {
               return (
                 <>
-                  <Route path={item?.to} element={<item.component />} />
-                  {item?.edit_to && (
-                    <Route
-                      path={item?.edit_to}
-                      element={<item.edit_component />}
-                    />
-                  )}
-                  {item?.add_to && (
-                    <Route
-                      path={item?.add_to}
-                      element={<item.add_component />}
-                    />
-                  )}
-                  {item?.view_to && (
-                    <Route
-                      path={item?.view_to}
-                      element={<item.view_component />}
-                    />
-                  )}
-                  {item?.select_location_to && (
-                    <Route
-                      path={item?.select_location_to}
-                      element={<item.select_location_component />}
-                    />
+                  {item?.to && (
+                    <Route path={item?.to} element={<item.component />} />
                   )}
                 </>
               );

@@ -19,20 +19,6 @@ import WebsiteContent from "../../pages/WebsiteContent/WebsiteContent";
 
 export const useRoutes = () => {
   const { routes } = useSelector((state: any) => state.root.user);
-  const mergeUserRoutes = routes?.map((item: any, index: number) => {
-    const mapping = userRoutesAll?.find(
-      (route: any) =>
-        route?.type?.trim()?.toLowerCase() === item?.type?.trim()?.toLowerCase()
-    );
-    if (mapping) {
-      return {
-        ...item,
-        ...mapping,
-      };
-    } else {
-      return item;
-    }
-  }) || [];
   const userRoutes = [
     {
       to: "/dashboard",
@@ -40,7 +26,7 @@ export const useRoutes = () => {
       image: dashboardImg,
       screen_name: "Dashboard",
     },
-    ...mergeUserRoutes,
+    ...routes,
     {
       to: "/screen-types",
       component: ScreenTypes,

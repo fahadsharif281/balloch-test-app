@@ -7,7 +7,7 @@ const useGetTitleRoute = (type: string) => {
   useEffect(() => {
     const flaged = routes?.find((item: any) => item.type === type);
     setTitle(flaged?.screen_name);
-  }, []);
+  }, [type]);
 
   return { title };
 };
