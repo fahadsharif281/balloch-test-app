@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import Dashboard from "../../pages/Dashboard/Dashboard";
-import { userRoutesAll } from "../../router/AllRoutes";
 import dashboardImg from "../../assets/png/dashboard.png";
 import contactUsImg from "../../assets/png/phoneIcon.png";
 import privacyPolicyImg from "../../assets/png/privacypolicy.png";

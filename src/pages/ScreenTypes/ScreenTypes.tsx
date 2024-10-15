@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import classes from "./ScreenTypes.module.scss";
 import Img from "../../assets/png/Car Parking.png";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { EditIconOrange, PlusSign } from "../../assets/svg/SvgImges";
+import {
+  EditIconOrange,
+  PlusSign,
+  DeleteIcon,
+} from "../../assets/svg/SvgImges";
 import Modal from "../../components/common/Modal/Modal";
 import EditScreen from "./EditScreen";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +16,7 @@ import CustomButton from "../../components/common/Button/Button";
 import { Input } from "@mui/material";
 import { TextArea } from "../../components/common/TextArea/TextArea";
 import AddCatogoryScreen from "./AddCatogoryScreen";
+import DeleteScreen from "./DeleteScreen";
 const baseURL = process.env.REACT_APP_BASE_URL;
 const ScreenTypes = () => {
   const dispatch = useDispatch<any>();
@@ -20,6 +25,7 @@ const ScreenTypes = () => {
   );
   const [show, setShow] = useState(false);
   const [showCatogory, setShowCatogoryModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState<IScreenTypesAPIResult>();
   const renderTooltip = (name: string, ...props: any) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -32,6 +38,9 @@ const ScreenTypes = () => {
   const handleClose = () => {
     setShow(!show);
   };
+  const handleDeleteToggle = () => {
+    setShowDeleteModal(!showDeleteModal);
+  };
   const handleCloseCatogoryModal = () => {
     setShowCatogoryModal(!showCatogory);
   };
@@ -42,7 +51,7 @@ const ScreenTypes = () => {
           <div className={classes.add_button_container}>
             <CustomButton
               onClick={() => {
-                handleCloseCatogoryModal()
+                handleCloseCatogoryModal();
               }}
               containerClassName={classes.add_button}
               buttonClassName={classes.button_class}
@@ -66,29 +75,52 @@ const ScreenTypes = () => {
             </div>
             {allUsers &&
               allUsers?.map((item: IScreenTypesAPIResult) => {
+                const src = item?.image?.includes("res.cloudinary.com")
+                  ? item?.image
+                  : `${baseURL}/${item?.image}`;
                 return (
                   <div className={classes.row}>
                     <div className={classes.image}>
-                      <img src={`${baseURL}/${item?.image}`} alt="icon" />
+                      <img src={src} alt="icon" />
                     </div>
                     <div>{item?.screen_name}</div>
-                    <div
-                      onClick={() => {
-                        handleClose();
-                        setSelectedUser(item);
-                      }}
-                      className={classes.editicon}
-                    >
-                      {" "}
-                      <OverlayTrigger
-                        placement="bottom"
-                        delay={{ show: 100, hide: 100 }}
-                        overlay={renderTooltip("Edit")}
+                    <div style={{ display: "flex" }}>
+                      <div
+                        onClick={() => {
+                          handleClose();
+                          setSelectedUser(item);
+                        }}
+                        className={classes.editicon}
                       >
-                        <div>
-                          <EditIconOrange />
-                        </div>
-                      </OverlayTrigger>
+                        {" "}
+                        <OverlayTrigger
+                          placement="bottom"
+                          delay={{ show: 100, hide: 100 }}
+                          overlay={renderTooltip("Edit")}
+                        >
+                          <div>
+                            <EditIconOrange />
+                          </div>
+                        </OverlayTrigger>
+                      </div>
+                      <div
+                        onClick={() => {
+                          handleDeleteToggle();
+                          setSelectedUser(item);
+                        }}
+                        className={classes.editicon}
+                      >
+                        {" "}
+                        <OverlayTrigger
+                          placement="bottom"
+                          delay={{ show: 100, hide: 100 }}
+                          overlay={renderTooltip("Delete")}
+                        >
+                          <div>
+                            <DeleteIcon />
+                          </div>
+                        </OverlayTrigger>
+                      </div>
                     </div>
                   </div>
                 );
@@ -106,13 +138,22 @@ const ScreenTypes = () => {
         <EditScreen onHide={handleClose} selectedUser={selectedUser} />
       </Modal>
       <Modal
-        title="Add Catogory"
+        title="Add Screen"
         closeButton={true}
         onHide={handleCloseCatogoryModal}
         show={showCatogory}
       >
-        <AddCatogoryScreen onHide={handleCloseCatogoryModal} selectedUser={selectedUser} />
-
+        <AddCatogoryScreen
+          onHide={handleCloseCatogoryModal}
+          selectedUser={selectedUser}
+        />
+      </Modal>
+      <Modal
+        closeButton={false}
+        onHide={handleDeleteToggle}
+        show={showDeleteModal}
+      >
+        <DeleteScreen onHide={handleDeleteToggle} selectedUser={selectedUser} />
       </Modal>
     </>
   );

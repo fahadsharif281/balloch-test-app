@@ -70,9 +70,14 @@ export const getAllUsersScreenTypesApiCall = async (): Promise<any> => {
 };
 
 export const updateScreenTypesScreenNameApiCall = async (
+  id: string,
   params: any
 ): Promise<any> => {
-  return HTTP_CLIENT.put<any>(`/api/screen_type/update`, params);
+  return HTTP_CLIENT.put<any>(`/api/screen_type/update/${id}`, params, {
+    headers: {
+      "Content-Type": "multipart/form-data;",
+    },
+  });
 };
 
 export const updateScreenTypesImageApiCall = async (
@@ -87,9 +92,13 @@ export const updateScreenTypesImageApiCall = async (
 export const addScreenTypesApiCall = async (params: any): Promise<any> => {
   return HTTP_CLIENT.post<any>(`/api/screen_type/addScreenType`, params, {
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data;",
     },
   });
+};
+
+export const deleteScreenTypesApiCall = async (params: any): Promise<any> => {
+  return HTTP_CLIENT.post<any>(`/api/screen_type/removeScreenType`, params);
 };
 
 export const getAboutUsResultsApiCall = async (): Promise<any> => {

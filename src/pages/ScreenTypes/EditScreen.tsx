@@ -19,7 +19,9 @@ const EditScreen = ({ selectedUser, onHide }: any) => {
   const [image, setImage] = useState("");
   useEffect(() => {
     if (selectedUser?.image) {
-      const imgURL = `${baseURL}/${selectedUser?.image}`;
+      const imgURL = selectedUser?.image?.includes("res.cloudinary.com")
+        ? selectedUser?.image
+        : `${baseURL}/${selectedUser?.image}`;
       setImage(imgURL);
       // note: this could be used if api wants the image as mandatory field
       // const ImagefileReader = new File(
@@ -37,16 +39,14 @@ const EditScreen = ({ selectedUser, onHide }: any) => {
       type: selectedUser?.type || "",
     },
     onSubmit: (values, formikHelpers) => {
+      const formData = new FormData();
       if (values?.image) {
-        const formData = new FormData();
         formData.append("image", values?.image);
-        updateScreenTypesImageApiCall(formData);
       }
-      const updateScreenName = {
-        screen_name: values?.screenName,
-        type: values?.type,
-      };
-      updateScreenTypesScreenNameApiCall(updateScreenName)
+      formData.append("screen_name", values?.screenName);
+      formData.append("type", values?.type);
+
+      updateScreenTypesScreenNameApiCall(values?.id, formData)
         .then((res) => {
           if (res?.data?.status === true) {
             dispatch(getScreenTypes());
@@ -62,6 +62,7 @@ const EditScreen = ({ selectedUser, onHide }: any) => {
         });
     },
   });
+
   const handleFileUpload = async (e: any) => {
     if (e.target.files) {
       formik.setFieldValue("image", e.target.files[0]);
