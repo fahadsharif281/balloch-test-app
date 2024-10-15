@@ -15,7 +15,7 @@ const App = (): JSX.Element => {
     <React.StrictMode>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <ReactRouter basename="park-admin">
+          <ReactRouter>
             <Routes />
           </ReactRouter>
         </PersistGate>
