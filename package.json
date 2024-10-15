@@ -2,7 +2,7 @@
   "name": "balloch-park-admin-panel-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "/park-admin",
   "dependencies": {
     "-": "^0.0.1",
     "@ckeditor/ckeditor5-react": "^9.0.0",
