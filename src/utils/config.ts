@@ -4,6 +4,9 @@ import { BASE_URL } from "./helpers";
 
 const HTTP_CLIENT: AxiosInstance = axios.create({
   baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 const initializeConfig = (store: any) => {

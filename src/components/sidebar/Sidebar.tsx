@@ -70,9 +70,11 @@ export const Sidebar = ({
                 ref={provided.innerRef}
               >
                 {userRoutes?.map((items: any, index: number) => {
-                  const src = items?.image?.includes("base64")
-                    ? items?.image
-                    : `${baseURL}/${items?.image}`;
+                  const src =
+                    items?.image?.includes("base64") ||
+                    items?.image?.includes("res.cloudinary.com")
+                      ? items?.image
+                      : `${baseURL}/${items?.image}`;
                   return (
                     <>
                       {items?._id ? (
