@@ -10,4 +10,5 @@ export interface IScreenTypesAPIResult {
   type: string;
   image: string;
   __v: number;
+  isDeleted?: boolean;
 }
