@@ -17,20 +17,21 @@ const AddCatogoryScreen = ({ onHide }: any) => {
   const formik = useFormik({
     initialValues: {
       image: "",
-      screen_Name: "",
-      type: "",
+      screenName: "",
     },
     validationSchema: yup.object().shape({
-      screen_Name: yup.string().required("Required"),
+      screenName: yup.string().required("Required"),
       image: yup.string().required("Required"),
-      type: yup.string().required("Required"),
     }),
     onSubmit: (values, formikHelpers) => {
       const formData = new FormData();
 
       formData.append("image", values?.image);
-      formData.append("screen_name", values?.screen_Name);
-      formData.append("type", values?.type?.toLowerCase());
+      formData.append("screen_name", values?.screenName);
+      formData.append(
+        "type",
+        values?.screenName?.replaceAll(" ", "_")?.toLowerCase()
+      );
       addScreenTypesApiCall(formData)
         .then((res) => {
           if (res?.data?.status === true) {
@@ -80,22 +81,13 @@ const AddCatogoryScreen = ({ onHide }: any) => {
             </div>
           )}
           <Input
-            value={formik?.values?.screen_Name}
-            onChange={formik.handleChange("screen_Name")}
+            value={formik?.values?.screenName}
+            onChange={formik.handleChange("screenName")}
             type="text"
             label="Category Name"
           />
-          {formik?.errors?.screen_Name && formik?.touched?.screen_Name && (
-            <p className={classes.errorText}>{formik?.errors?.screen_Name}</p>
-          )}
-          <Input
-            value={formik?.values?.type}
-            onChange={formik?.handleChange("type")}
-            type="text"
-            label="Category Type"
-          />
-          {formik?.errors?.type && formik?.touched?.type && (
-            <p className={classes.errorText}>{formik?.errors?.type}</p>
+          {formik?.errors?.screenName && formik?.touched?.screenName && (
+            <p className={classes.errorText}>{formik?.errors?.screenName}</p>
           )}
           <CustomButton
             type="submit"
