@@ -25,7 +25,7 @@ export const useRoutes = () => {
       image: dashboardImg,
       screen_name: "Dashboard",
     },
-    ...routes,
+    ...(routes || []),
     {
       to: "/screen-types",
       component: ScreenTypes,

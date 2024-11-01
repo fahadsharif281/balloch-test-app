@@ -57,10 +57,10 @@ const Routes = (): JSX.Element => {
         isContentCardsLoading ||
         isWebContentLoading ||
         isContactNoLoading) && (
-          <div className={classes.loader_container}>
-            <LinearProgress className={classes.loader} color="success" />
-          </div>
-        )}
+        <div className={classes.loader_container}>
+          <LinearProgress className={classes.loader} color="success" />
+        </div>
+      )}
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -82,21 +82,24 @@ const Routes = (): JSX.Element => {
         </Route> */}
         <Route element={<Protected />}>
           <Route element={<Layout />}>
-            <Route path="/screen-location/:type" element={<ScreenLocation />} />
             <Route
-              path="/screen-location/:type/view-details"
+              path="/screen-location/:type?"
+              element={<ScreenLocation />}
+            />
+            <Route
+              path="/screen-location/:type?/view-details"
               element={<ViewDetails />}
             />
             <Route
-              path="/screen-location/:type/edit-details"
+              path="/screen-location/:type?/edit-details"
               element={<EditDetails />}
             />
             <Route
-              path="/screen-location/:type/select-location"
+              path="/screen-location/:type?/select-location"
               element={<SelectLocation />}
             />
             <Route
-              path="/screen-location/:type/select-location/add-form"
+              path="/screen-location/:type?/select-location/add-form"
               element={<AddLocation />}
             />
             {userRoutes?.map((item) => {
