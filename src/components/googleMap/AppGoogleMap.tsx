@@ -30,6 +30,7 @@ const AppGoogleMap = ({
   const { longitude, latitude } = useSelector(
     (state: any) => state.root.location
   );
+  const { routes } = useSelector((state: any) => state.root.user);
   const { isLoaded } = useLoadScript({
     id: "google-map-script",
     googleMapsApiKey: `${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`,
@@ -69,12 +70,16 @@ const AppGoogleMap = ({
         >
           {allMapLocations &&
             allMapLocations?.map((item: IDashboardMapDatum, index: number) => {
+              const screenType = routes?.find((screen: any) => {
+                return screen?.type === item?.type;
+              });
+
               return (
                 <MarkerF
                   key={index}
                   icon={{
                     scaledSize: new google.maps.Size(30, 30),
-                    url: getMapIcon(item?.type),
+                    url: getMapIcon(item?.type) || (screenType?.image ?? null),
                   }}
                   position={{
                     lat: item?.location?.coordinates[1],
