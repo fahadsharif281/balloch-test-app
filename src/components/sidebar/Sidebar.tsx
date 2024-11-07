@@ -71,8 +71,7 @@ export const Sidebar = ({
               >
                 {userRoutes?.map((items: any, index: number) => {
                   const src =
-                    items?.image?.includes("base64") ||
-                    items?.image?.includes("res.cloudinary.com")
+                    items?.image?.includes("base64") || items?.image_id
                       ? items?.image
                       : `${baseURL}/${items?.image}`;
                   return (

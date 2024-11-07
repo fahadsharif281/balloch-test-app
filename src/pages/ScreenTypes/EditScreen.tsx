@@ -19,7 +19,7 @@ const EditScreen = ({ selectedUser, onHide }: any) => {
   const [image, setImage] = useState("");
   useEffect(() => {
     if (selectedUser?.image) {
-      const imgURL = selectedUser?.image?.includes("res.cloudinary.com")
+      const imgURL = selectedUser?.image_id
         ? selectedUser?.image
         : `${baseURL}/${selectedUser?.image}`;
       setImage(imgURL);
