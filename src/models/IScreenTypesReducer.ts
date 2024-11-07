@@ -9,6 +9,7 @@ export interface IScreenTypesAPIResult {
   screen_name: string;
   type: string;
   image: string;
+  image_id?: string;
   __v: number;
   isDeleted?: boolean;
 }

@@ -75,7 +75,7 @@ const ScreenTypes = () => {
             </div>
             {allUsers &&
               allUsers?.map((item: IScreenTypesAPIResult) => {
-                const src = item?.image?.includes("res.cloudinary.com")
+                const src = item?.image_id
                   ? item?.image
                   : `${baseURL}/${item?.image}`;
                 return (
